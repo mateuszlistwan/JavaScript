@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie ML4TIB</title>
+</head>
+<body>
+
+<button id="przycisk">Dodaj akapit</button>
+<p id="pole"></p>
+
+<script>
+    let przycisk = document.querySelector("#przycisk");
+    let liczba = 0;
+    let tekst = "Akapit nr ";
+
+    przycisk.addEventListener("click", dodaj);
+
+    function dodaj() {
+        liczba++;
+        let miejsce = document.querySelector("#pole");
+        miejsce.innerHTML += tekst + liczba + "<br>";
+    }
+</script>
+
+
+</body>
+</html>
