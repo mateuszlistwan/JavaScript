@@ -6,20 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-     
-<
-    <h1>Zmiana tekstu</h1>
-
-
+    <p>Wyszukiwanie obrazka *.gif</p>
     <script>
-        let text = "Visit Microsoft!";
-        let result = text.replace(/Microsoft/i,"W3Schools");
-
-
-        console.log( result );
+        let tekst="ikona jest w logo.gif";
+        var gifRegex=/\S*\.gif/i;
+        let position=tekst.search(gifRegex)
+        document.write(tekst.slice(position));
     </script>
-</body>
-</html>
-
 </body>
 </html>

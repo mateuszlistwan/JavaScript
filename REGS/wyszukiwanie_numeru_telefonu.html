@@ -6,20 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-     
-<
-    <h1>Zmiana tekstu</h1>
-
-
+    <p>Wyszukiwanie numeru telefonu</p>
     <script>
-        let text = "Visit Microsoft!";
-        let result = text.replace(/Microsoft/i,"W3Schools");
+        let tekst="tel. 656434212";
+        var wzorzec=/\d\d\d\d\d\d\d\d\d/;
+        var pozycja = tekst.search(wzorzec);
+        document.write('cyfry znaleziono na pozycji;' +pozycja);
 
-
-        console.log( result );
     </script>
-</body>
-</html>
-
 </body>
 </html>

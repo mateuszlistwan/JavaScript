@@ -6,20 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-     
-<
-    <h1>Zmiana tekstu</h1>
-
-
+    <p>Wyszukiwanie kody pocztowego</p>
     <script>
-        let text = "Visit Microsoft!";
-        let result = text.replace(/Microsoft/i,"W3Schools");
+        let tekst="34-200 Sucha beskidzka";
+        var kod_pocztowy=/\d{2}-\d{3}/;
+        var pozycja = tekst.search(kod_pocztowy);
+        document.write(tekst.slice(pozycja,pozycja+6));
 
 
-        console.log( result );
     </script>
-</body>
-</html>
-
 </body>
 </html>
