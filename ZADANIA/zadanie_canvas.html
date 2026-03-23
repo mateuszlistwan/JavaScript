@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadanie Canvas</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #111; }
+        canvas { border: 3px solid #444; background: #000; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="600" height="400"></canvas>
+
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let angle = 0;
+    let shipX = 0;
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, '#0f2027');
+        gradient.addColorStop(0.5, '#203a43');
+        gradient.addColorStop(1, '#2c5364');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 600, 300);
+
+        ctx.save();
+        ctx.translate(300, 150);
+        ctx.rotate(angle);
+        
+        ctx.shadowBlur = 30;
+        ctx.shadowColor = "gold";
+        ctx.fillStyle = "#ffcc33";
+        ctx.beginPath();
+        ctx.arc(0, 0, 45, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.strokeStyle = "rgba(255, 204, 51, 0.4)";
+        ctx.lineWidth = 3;
+        ctx.setLineDash([15, 10]);
+        for (let i = 0; i < 12; i++) {
+            ctx.rotate(Math.PI / 6);
+            ctx.beginPath();
+            ctx.moveTo(55, 0);
+            ctx.lineTo(120, 0);
+            ctx.stroke();
+        }
+        ctx.setLineDash([]);
+        ctx.restore();
+
+        ctx.fillStyle = "#001d3d";
+        ctx.beginPath();
+        ctx.moveTo(0, 300);
+        ctx.quadraticCurveTo(150, 270 + Math.sin(angle) * 10, 300, 300);
+        ctx.quadraticCurveTo(450, 330 + Math.sin(angle) * 10, 600, 300);
+        ctx.lineTo(600, 400);
+        ctx.lineTo(0, 400);
+        ctx.fill();
+
+        ctx.strokeStyle = "rgba(255,255,255,0.3)";
+        ctx.strokeRect(40, 280, 30, 30);
+
+        ctx.save();
+        ctx.translate(shipX, 290);
+        ctx.fillStyle = "#3d2b1f";
+        ctx.fillRect(0, 0, 60, 15);
+        ctx.beginPath();
+        ctx.moveTo(30, 0);
+        ctx.lineTo(30, -30);
+        ctx.strokeStyle = "#eee";
+        ctx.stroke();
+        ctx.restore();
+        angle += 0.01;
+        shipX += 0.8;
+        if (shipX > 600) shipX = -60;
+
+        requestAnimationFrame(draw);
+    }
+
+    draw();
+</script>
+
+</body>
+</html>
